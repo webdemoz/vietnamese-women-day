@@ -2,40 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Chào Mừng Ngày Phụ Nữ Việt Nam 20/11</title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+        .flower-effect {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            animation: bloom 1s forwards;
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        .wrapper {
+            position: relative;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
         <div class="product-img">
-            <img src="./ngayphunuvietnam.png" 
-            alt="" height="420" width="327">
+            <img src="./ngayphunuvietnam.png" alt="" height="420" width="327">
         </div>
         <div class="product-info">
             <div class="product-text">
                 <h1>Chào Mừng Ngày Phụ Nữ Việt Nam</h1>
                 <h2>Gnouc 3301</h2>
-                <p>Nhân ngày phụ nữ Việt Nam
+                <p>Nhân ngày phụ nữ Việt Nam ta
                     <br>
-                    Chúc cho phái đẹp được ngàn lời yêu
+                    Gửi mấy vần thơ gọi chút quà
                     <br>
-Người thương chăm sóc nuông chiều
-<br>
-Sống trong áp lực phải đi tiêu tiền <br>
-Niềm vui cứ đến triền miên <br>
-Không phải suy nghĩ nặng đầu phiền lo <br>
-Chúc cho hạnh phúc đầy kho <br>
-Cuộc sống hạnh phúc ấm no cả đời! <br> 
+                    Chúc chị môi hồng xinh đẹp nhé
+                    <br>
+                    Mừng em má đỏ dễ thương nha <br>
+                    Tình yêu thắm thiết hoài đơm nụ <br>
+                    Hạnh phúc đong đầy vẫn nở hoa. <br>
                 </p>
             </div>
 
             <div class="product-btn">
-                <!-- <p><span>Vô Giá</span></p> -->
-           
-            <div>
+                <button type="button" id="giftButton">
+                    Tặng Quà
+                </button>
+                <button class="contact-btn" onclick="window.location.href='https://zalo.me/0364121597'">
+                    Contact
+                </button>
+            </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('giftButton').addEventListener('click', function(e) {
+            const flower = document.createElement('div');
+            flower.className = 'flower-effect';
+            document.body.appendChild(flower);
+
+            const rect = e.target.getBoundingClientRect();
+            flower.style.left = rect.left + rect.width / 2 + 'px';
+            flower.style.top = rect.top + rect.height / 2 + 'px';
+
+            // Remove the flower effect after animation completes
+            flower.addEventListener('animationend', () => {
+                flower.remove();
+            });
+        });
+    </script>
 </body>
 </html>
